@@ -46,4 +46,10 @@
     XCTAssertEqual(0u, blinkModel.frequency, @"Test increment frequency");
 }
 
+-(void)testDecrementFrequencyBiggerValue
+{
+    [blinkModel decrementFrequency:12];
+    XCTAssertEqual(0u, blinkModel.frequency, @"Test increment frequency");
+}
+
 @end

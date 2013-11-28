@@ -26,7 +26,12 @@
 
 -(void)decrementFrequency:(unsigned int)decrement
 {
-    self.frequency -= decrement;
+    if (decrement>self.frequency)
+    {
+        self.frequency = 0;
+    } else {
+        self.frequency -= decrement;
+    }
 }
 
 @end
