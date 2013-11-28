@@ -34,4 +34,9 @@
     }
 }
 
+-(void)startBeat
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"beatNotification"
+                                                        object:nil];
+}
 @end

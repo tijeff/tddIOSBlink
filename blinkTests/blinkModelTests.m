@@ -10,17 +10,34 @@
 #import "epiBlinkModel.h"
 
 @interface blinkModelTests : XCTestCase
-{
-    epiBlinkModel* blinkModel;
-}
 @end
 
 @implementation blinkModelTests
+{
+    epiBlinkModel* blinkModel;
+    unsigned int numberNotifications;
+}
+
+-(id)init
+{
+    self = [super init];
+    numberNotifications = 0;
+    return self;
+}
+
+-(void)beatNotificationHandle:(NSNotification*)note
+{
+    numberNotifications++;
+}
 
 - (void)setUp
 {
     [super setUp];
     blinkModel = [[epiBlinkModel alloc] init];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(beatNotificationHandle:)
+                                                 name:@"beatNotification"
+                                               object:nil];
 }
 
 - (void)tearDown
@@ -49,7 +66,12 @@
 -(void)testDecrementFrequencyBiggerValue
 {
     [blinkModel decrementFrequency:12];
-    XCTAssertEqual(0u, blinkModel.frequency, @"Test increment frequency");
+    XCTAssertEqual(0u, blinkModel.frequency, @"Test decrement frequency");
 }
 
+-(void)testBeatNotificationAfterFrequency
+{
+    [blinkModel startBeat];
+    XCTAssertEqual(1u, numberNotifications, @"Test beat notification");
+}
 @end

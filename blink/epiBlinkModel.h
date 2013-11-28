@@ -16,5 +16,6 @@
 
 -(void)incrementFrequency: (unsigned int)increment;
 -(void)decrementFrequency: (unsigned int)decrement;
+-(void)startBeat;
 
 @end
