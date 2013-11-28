@@ -23,4 +23,10 @@
 {
     self.frequency += increment;
 }
+
+-(void)decrementFrequency:(unsigned int)decrement
+{
+    self.frequency -= decrement;
+}
+
 @end
