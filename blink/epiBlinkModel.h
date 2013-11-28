@@ -14,4 +14,6 @@
 }
 @property(nonatomic, assign)unsigned int frequency;
 
+-(void)incrementFrequency: (unsigned int)increment;
+
 @end

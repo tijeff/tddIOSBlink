@@ -33,4 +33,10 @@
     XCTAssertEqual(10u, blinkModel.frequency, @"Test default frequency");
 }
 
+-(void)testIncrementFrequency
+{
+    epiBlinkModel* blinkModel = [[epiBlinkModel alloc] init];
+    [blinkModel incrementFrequency:10];
+    XCTAssertEqual(20u, blinkModel.frequency, @"Test increment frequency");
+}
 @end
