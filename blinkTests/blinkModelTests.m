@@ -69,9 +69,11 @@
     XCTAssertEqual(0u, blinkModel.frequency, @"Test decrement frequency");
 }
 
--(void)testBeatNotificationAfterFrequency
+-(void)testBeatNotification1sAfterStart
 {
     [blinkModel startBeat];
+    sleep(1u);
     XCTAssertEqual(1u, numberNotifications, @"Test beat notification");
 }
+
 @end
