@@ -7,12 +7,13 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "epiBlinkModel.h"
 
-@interface blinkTests : XCTestCase
+@interface blinkModelTests : XCTestCase
 
 @end
 
-@implementation blinkTests
+@implementation blinkModelTests
 
 - (void)setUp
 {
@@ -26,9 +27,10 @@
     [super tearDown];
 }
 
-- (void)testExample
+- (void)testDefaultFrequency
 {
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+    epiBlinkModel* blinkModel = [[epiBlinkModel alloc] init];
+    XCTAssertEqual(10u, blinkModel.frequency, @"Test default frequency");
 }
 
 @end

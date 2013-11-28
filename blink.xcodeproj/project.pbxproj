@@ -20,7 +20,8 @@
 		1FD8547D1846C3C800667062 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FD8545C1846C3C700667062 /* Foundation.framework */; };
 		1FD8547E1846C3C800667062 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FD854601846C3C700667062 /* UIKit.framework */; };
 		1FD854861846C3C800667062 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1FD854841846C3C800667062 /* InfoPlist.strings */; };
-		1FD854881846C3C800667062 /* blinkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FD854871846C3C800667062 /* blinkTests.m */; };
+		1FD854881846C3C800667062 /* blinkModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FD854871846C3C800667062 /* blinkModelTests.m */; };
+		1FD854931846C75900667062 /* epiBlinkModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FD854921846C75900667062 /* epiBlinkModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +53,9 @@
 		1FD8547B1846C3C700667062 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		1FD854831846C3C800667062 /* blinkTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "blinkTests-Info.plist"; sourceTree = "<group>"; };
 		1FD854851846C3C800667062 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		1FD854871846C3C800667062 /* blinkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = blinkTests.m; sourceTree = "<group>"; };
+		1FD854871846C3C800667062 /* blinkModelTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = blinkModelTests.m; sourceTree = "<group>"; };
+		1FD854911846C75900667062 /* epiBlinkModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = epiBlinkModel.h; sourceTree = "<group>"; };
+		1FD854921846C75900667062 /* epiBlinkModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = epiBlinkModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +117,8 @@
 			children = (
 				1FD8546B1846C3C700667062 /* epiAppDelegate.h */,
 				1FD8546C1846C3C700667062 /* epiAppDelegate.m */,
+				1FD854911846C75900667062 /* epiBlinkModel.h */,
+				1FD854921846C75900667062 /* epiBlinkModel.m */,
 				1FD8546E1846C3C700667062 /* Main.storyboard */,
 				1FD854711846C3C700667062 /* epiViewController.h */,
 				1FD854721846C3C700667062 /* epiViewController.m */,
@@ -137,7 +142,7 @@
 		1FD854811846C3C800667062 /* blinkTests */ = {
 			isa = PBXGroup;
 			children = (
-				1FD854871846C3C800667062 /* blinkTests.m */,
+				1FD854871846C3C800667062 /* blinkModelTests.m */,
 				1FD854821846C3C800667062 /* Supporting Files */,
 			);
 			path = blinkTests;
@@ -200,6 +205,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = jeff;
 				TargetAttributes = {
+					1FD854581846C3C700667062 = {
+						DevelopmentTeam = 6WMME2X37Z;
+					};
 					1FD854791846C3C700667062 = {
 						TestTargetID = 1FD854581846C3C700667062;
 					};
@@ -251,6 +259,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FD854731846C3C700667062 /* epiViewController.m in Sources */,
+				1FD854931846C75900667062 /* epiBlinkModel.m in Sources */,
 				1FD854691846C3C700667062 /* main.m in Sources */,
 				1FD8546D1846C3C700667062 /* epiAppDelegate.m in Sources */,
 			);
@@ -260,7 +269,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1FD854881846C3C800667062 /* blinkTests.m in Sources */,
+				1FD854881846C3C800667062 /* blinkModelTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -379,10 +388,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "blink/blink-Prefix.pch";
 				INFOPLIST_FILE = "blink/blink-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -392,10 +404,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "blink/blink-Prefix.pch";
 				INFOPLIST_FILE = "blink/blink-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
