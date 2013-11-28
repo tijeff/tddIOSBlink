@@ -10,7 +10,9 @@
 #import "epiBlinkModel.h"
 
 @interface blinkModelTests : XCTestCase
-
+{
+    epiBlinkModel* blinkModel;
+}
 @end
 
 @implementation blinkModelTests
@@ -18,25 +20,24 @@
 - (void)setUp
 {
     [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+    blinkModel = [[epiBlinkModel alloc] init];
 }
 
 - (void)tearDown
 {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
+    blinkModel = Nil;
     [super tearDown];
 }
 
 - (void)testDefaultFrequency
 {
-    epiBlinkModel* blinkModel = [[epiBlinkModel alloc] init];
     XCTAssertEqual(10u, blinkModel.frequency, @"Test default frequency");
 }
 
 -(void)testIncrementFrequency
 {
-    epiBlinkModel* blinkModel = [[epiBlinkModel alloc] init];
     [blinkModel incrementFrequency:10];
     XCTAssertEqual(20u, blinkModel.frequency, @"Test increment frequency");
 }
+
 @end
