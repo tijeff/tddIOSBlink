@@ -76,4 +76,11 @@
     XCTAssertEqual(1u, numberNotifications, @"Test beat notification");
 }
 
+-(void)testBeatNotification11sAfterStart
+{
+    [blinkModel startBeat];
+    sleep(11u);
+    XCTAssertEqual(2u, numberNotifications, @"Test beat notification");
+}
+
 @end

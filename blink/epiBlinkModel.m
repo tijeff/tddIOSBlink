@@ -9,6 +9,9 @@
 #import "epiBlinkModel.h"
 
 @implementation epiBlinkModel
+{
+    NSThread*beatThread;
+}
 
 @synthesize frequency;
 
@@ -16,6 +19,9 @@
 {
     self = [super init];
     self.frequency = 10;
+    self->beatThread = [[NSThread alloc] initWithTarget:self
+                                         selector:@selector(threadBeat)
+                                           object:nil];
     return self;
 }
 
@@ -36,7 +42,18 @@
 
 -(void)startBeat
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"beatNotification"
-                                                        object:nil];
+    if (![self->beatThread isExecuting]) {
+        [self->beatThread start];
+    }
+}
+
+-(void)threadBeat
+{
+    while(true)
+    {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"beatNotification"
+                                                            object:nil];
+        sleep(self.frequency);
+    }
 }
 @end
