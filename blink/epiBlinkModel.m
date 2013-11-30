@@ -47,9 +47,14 @@
     }
 }
 
+-(void)stopBeat
+{
+    [self->beatThread cancel];
+}
+
 -(void)threadBeat
 {
-    while(true)
+    while(![self->beatThread isCancelled])
     {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"beatNotification"
                                                             object:nil];

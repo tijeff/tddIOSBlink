@@ -33,6 +33,7 @@
 - (void)setUp
 {
     [super setUp];
+    numberNotifications = 0;
     blinkModel = [[epiBlinkModel alloc] init];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(beatNotificationHandle:)
@@ -42,7 +43,9 @@
 
 - (void)tearDown
 {
+    [blinkModel stopBeat];
     blinkModel = Nil;
+    numberNotifications = 0;
     [super tearDown];
 }
 
@@ -80,6 +83,15 @@
 {
     [blinkModel startBeat];
     sleep(11u);
+    XCTAssertEqual(2u, numberNotifications, @"Test beat notification");
+}
+
+-(void)testBeatNotificationStartWait11sStopWait20s
+{
+    [blinkModel startBeat];
+    sleep(11u);
+    [blinkModel stopBeat];
+    sleep(20u);
     XCTAssertEqual(2u, numberNotifications, @"Test beat notification");
 }
 
