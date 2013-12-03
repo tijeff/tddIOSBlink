@@ -46,4 +46,10 @@
     XCTAssertNotNil([viewController labelFrequence]);
 }
 
+- (void)testLabelFreqColor
+{
+    XCTAssertEqualObjects([[viewController labelFrequence] textColor], [UIColor greenColor], @"Frequence label should be green");
+}
+
+
 @end
