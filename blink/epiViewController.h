@@ -11,5 +11,6 @@
 @interface epiViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIButton *buttonPlus;
+@property (weak, nonatomic) IBOutlet UIButton *buttonMinus;
 
 @end

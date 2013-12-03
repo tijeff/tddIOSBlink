@@ -34,4 +34,13 @@
     [viewController performSelectorOnMainThread:@selector(loadView) withObject:nil waitUntilDone:YES];
     XCTAssertNotNil([viewController buttonPlus]);
 }
+
+- (void)testButtonMinus
+{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    epiViewController* viewController = [storyboard instantiateInitialViewController];
+    [viewController performSelectorOnMainThread:@selector(loadView) withObject:nil waitUntilDone:YES];
+    XCTAssertNotNil([viewController buttonMinus]);
+}
+
 @end
