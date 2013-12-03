@@ -10,7 +10,9 @@
 #import "epiViewController.h"
 
 @interface blinkViewTests : XCTestCase
-
+{
+    epiViewController* viewController;
+}
 @end
 
 @implementation blinkViewTests
@@ -18,29 +20,30 @@
 - (void)setUp
 {
     [super setUp];
-    // Put setup code here; it will be run once, before the first test case.
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    viewController = [storyboard instantiateInitialViewController];
+    [viewController performSelectorOnMainThread:@selector(loadView) withObject:nil waitUntilDone:YES];
 }
 
 - (void)tearDown
 {
-    // Put teardown code here; it will be run once, after the last test case.
+    viewController = nil;
     [super tearDown];
 }
 
 - (void)testButtonPlus
 {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    epiViewController* viewController = [storyboard instantiateInitialViewController];
-    [viewController performSelectorOnMainThread:@selector(loadView) withObject:nil waitUntilDone:YES];
     XCTAssertNotNil([viewController buttonPlus]);
 }
 
 - (void)testButtonMinus
 {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    epiViewController* viewController = [storyboard instantiateInitialViewController];
-    [viewController performSelectorOnMainThread:@selector(loadView) withObject:nil waitUntilDone:YES];
     XCTAssertNotNil([viewController buttonMinus]);
+}
+
+- (void)testLabelFreq
+{
+    XCTAssertNotNil([viewController labelFrequence]);
 }
 
 @end
