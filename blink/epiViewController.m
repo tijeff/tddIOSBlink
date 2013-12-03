@@ -10,9 +10,12 @@
 
 @interface epiViewController ()
 
+
 @end
 
 @implementation epiViewController
+
+@synthesize buttonPlus;
 
 - (void)viewDidLoad
 {

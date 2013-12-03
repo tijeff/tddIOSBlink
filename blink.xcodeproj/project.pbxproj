@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F5522DA184D746000F4920C /* blinkViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F5522D9184D746000F4920C /* blinkViewTests.m */; };
 		1FD8545D1846C3C700667062 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FD8545C1846C3C700667062 /* Foundation.framework */; };
 		1FD8545F1846C3C700667062 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FD8545E1846C3C700667062 /* CoreGraphics.framework */; };
 		1FD854611846C3C700667062 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FD854601846C3C700667062 /* UIKit.framework */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F5522D9184D746000F4920C /* blinkViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = blinkViewTests.m; sourceTree = "<group>"; };
 		1FD854591846C3C700667062 /* blink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = blink.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FD8545C1846C3C700667062 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1FD8545E1846C3C700667062 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -143,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				1FD854871846C3C800667062 /* blinkModelTests.m */,
+				1F5522D9184D746000F4920C /* blinkViewTests.m */,
 				1FD854821846C3C800667062 /* Supporting Files */,
 			);
 			path = blinkTests;
@@ -270,6 +273,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FD854881846C3C800667062 /* blinkModelTests.m in Sources */,
+				1F5522DA184D746000F4920C /* blinkViewTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -476,6 +480,7 @@
 				1FD8548D1846C3C800667062 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1FD8548E1846C3C800667062 /* Build configuration list for PBXNativeTarget "blinkTests" */ = {
 			isa = XCConfigurationList;
@@ -484,6 +489,7 @@
 				1FD854901846C3C800667062 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
