@@ -58,6 +58,13 @@
                                     <color key="titleColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Blinker" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KId-z5-kSn">
+                                <rect key="frame" x="20" y="297" width="280" height="251"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="75"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -65,6 +72,7 @@
                         <outlet property="buttonMinus" destination="Mh1-tW-Ade" id="w7H-0B-iN2"/>
                         <outlet property="buttonPlus" destination="sCv-OZ-i1g" id="s8Q-fD-fN1"/>
                         <outlet property="buttonStartStop" destination="Nzt-Lz-CVU" id="xTS-if-LWR"/>
+                        <outlet property="labelBlinker" destination="KId-z5-kSn" id="pzC-qx-ry6"/>
                         <outlet property="labelFrequence" destination="gHq-Pk-KgB" id="bNg-fS-joI"/>
                     </connections>
                 </viewController>

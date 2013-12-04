@@ -61,4 +61,8 @@
     XCTAssertNotNil([viewController buttonStartStop]);
 }
 
+-(void)testLabelBlinker
+{
+    XCTAssertNotNil([viewController labelBlinker]);
+}
 @end
