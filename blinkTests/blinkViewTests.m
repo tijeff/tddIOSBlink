@@ -56,5 +56,9 @@
     XCTAssertEqual([[viewController labelFrequence] textAlignment], NSTextAlignmentCenter, @"Frequence label should center align");
 }
 
+-(void)testButtonStartStop
+{
+    XCTAssertNotNil([viewController buttonStartStop]);
+}
 
 @end
