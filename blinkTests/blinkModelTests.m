@@ -49,27 +49,27 @@
     [super tearDown];
 }
 
-- (void)testDefaultFrequency
+- (void)testDefaultPeriod
 {
-    XCTAssertEqual(10u, blinkModel.frequency, @"Test default frequency");
+    XCTAssertEqual(10u, blinkModel.period, @"Test default period");
 }
 
--(void)testIncrementFrequency
+-(void)testIncrementPeriod
 {
-    [blinkModel incrementFrequency:10];
-    XCTAssertEqual(20u, blinkModel.frequency, @"Test increment frequency");
+    [blinkModel incrementPeriod:10];
+    XCTAssertEqual(20u, blinkModel.period, @"Test increment period");
 }
 
--(void)testDecrementFrequency
+-(void)testDecrementPeriod
 {
-    [blinkModel decrementFrequency:10];
-    XCTAssertEqual(0u, blinkModel.frequency, @"Test increment frequency");
+    [blinkModel decrementPeriod:10];
+    XCTAssertEqual(0u, blinkModel.period, @"Test increment period");
 }
 
--(void)testDecrementFrequencyBiggerValue
+-(void)testDecrementPeriodBiggerValue
 {
-    [blinkModel decrementFrequency:12];
-    XCTAssertEqual(0u, blinkModel.frequency, @"Test decrement frequency");
+    [blinkModel decrementPeriod:12];
+    XCTAssertEqual(0u, blinkModel.period, @"Test decrement period");
 }
 
 -(void)testBeatNotification1sAfterStart

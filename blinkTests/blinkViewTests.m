@@ -41,19 +41,19 @@
     XCTAssertNotNil([viewController buttonMinus]);
 }
 
-- (void)testLabelFreq
+- (void)testLabelPeriode
 {
-    XCTAssertNotNil([viewController labelFrequence]);
+    XCTAssertNotNil([viewController labelPeriod]);
 }
 
-- (void)testLabelFreqColor
+- (void)testLabelPeriodeColor
 {
-    XCTAssertEqualObjects([[viewController labelFrequence] textColor], [UIColor greenColor], @"Frequence label should be green");
+    XCTAssertEqualObjects([[viewController labelPeriod] textColor], [UIColor greenColor], @"Périod label should be green");
 }
 
-- (void)testLabelFreqCenter
+- (void)testLabelPeriodeCenter
 {
-    XCTAssertEqual([[viewController labelFrequence] textAlignment], NSTextAlignmentCenter, @"Frequence label should center align");
+    XCTAssertEqual([[viewController labelPeriod] textAlignment], NSTextAlignmentCenter, @"Period label should center align");
 }
 
 -(void)testButtonStartStop
@@ -65,4 +65,5 @@
 {
     XCTAssertNotNil([viewController labelBlinker]);
 }
+
 @end

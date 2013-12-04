@@ -12,7 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *buttonPlus;
 @property (weak, nonatomic) IBOutlet UIButton *buttonMinus;
-@property (weak, nonatomic) IBOutlet UILabel *labelFrequence;
+@property (weak, nonatomic) IBOutlet UILabel *labelPeriod;
 @property (weak, nonatomic) IBOutlet UIButton *buttonStartStop;
 @property (weak, nonatomic) IBOutlet UILabel *labelBlinker;
 @end

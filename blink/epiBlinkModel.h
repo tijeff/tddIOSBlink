@@ -10,12 +10,12 @@
 
 @interface epiBlinkModel : NSObject
 {
-    unsigned int frequency;
+    unsigned int period;
 }
-@property(nonatomic, assign)unsigned int frequency;
+@property(nonatomic, assign)unsigned int period;
 
--(void)incrementFrequency: (unsigned int)increment;
--(void)decrementFrequency: (unsigned int)decrement;
+-(void)incrementPeriod: (unsigned int)increment;
+-(void)decrementPeriod: (unsigned int)decrement;
 -(void)startBeat;
 -(void)stopBeat;
 

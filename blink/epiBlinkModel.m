@@ -13,30 +13,30 @@
     NSThread*beatThread;
 }
 
-@synthesize frequency;
+@synthesize period;
 
 -(id)init
 {
     self = [super init];
-    self.frequency = 10;
+    self.period = 10;
     self->beatThread = [[NSThread alloc] initWithTarget:self
                                          selector:@selector(threadBeat)
                                            object:nil];
     return self;
 }
 
--(void)incrementFrequency:(unsigned int)increment
+-(void)incrementPeriod:(unsigned int)increment
 {
-    self.frequency += increment;
+    self.period += increment;
 }
 
--(void)decrementFrequency:(unsigned int)decrement
+-(void)decrementPeriod:(unsigned int)decrement
 {
-    if (decrement>self.frequency)
+    if (decrement>self.period)
     {
-        self.frequency = 0;
+        self.period = 0;
     } else {
-        self.frequency -= decrement;
+        self.period -= decrement;
     }
 }
 
@@ -58,7 +58,7 @@
     {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"beatNotification"
                                                             object:nil];
-        sleep(self.frequency);
+        sleep(self.period);
     }
 }
 @end

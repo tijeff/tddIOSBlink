@@ -73,7 +73,7 @@
                         <outlet property="buttonPlus" destination="sCv-OZ-i1g" id="s8Q-fD-fN1"/>
                         <outlet property="buttonStartStop" destination="Nzt-Lz-CVU" id="xTS-if-LWR"/>
                         <outlet property="labelBlinker" destination="KId-z5-kSn" id="pzC-qx-ry6"/>
-                        <outlet property="labelFrequence" destination="gHq-Pk-KgB" id="bNg-fS-joI"/>
+                        <outlet property="labelPeriod" destination="gHq-Pk-KgB" id="eD5-oo-vg2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
