@@ -51,5 +51,10 @@
     XCTAssertEqualObjects([[viewController labelFrequence] textColor], [UIColor greenColor], @"Frequence label should be green");
 }
 
+- (void)testLabelFreqCenter
+{
+    XCTAssertEqual([[viewController labelFrequence] textAlignment], NSTextAlignmentCenter, @"Frequence label should center align");
+}
+
 
 @end
