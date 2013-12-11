@@ -15,15 +15,14 @@
 {
     epiViewController*sutController;
     mockBlinkModel*theMockBlinkModel;
-    bool dontUseMockModel;
 }
 @end
 
 @implementation blinkControllerTests
 
--(void)allocController
+-(void)allocControllerWithMockModel:(bool)UseMockModel
 {
-    if (dontUseMockModel) {
+    if (!UseMockModel) {
         sutController = [[epiViewController alloc] init];
     } else {
         theMockBlinkModel = [[mockBlinkModel alloc] init];
@@ -34,31 +33,34 @@
 - (void)setUp
 {
     [super setUp];
-    [self allocController];
 }
 
 - (void)tearDown
 {
-    // Put teardown code here; it will be run once, after the last test case.
+    sutController = nil;
     [super tearDown];
 }
 
 - (void)testControllerModelNotNil
 {
-    dontUseMockModel = true;
+    // Rebuild sutController with standard model (not mock)
+    [self allocControllerWithMockModel:false];
     XCTAssertNotNil([sutController model], @"View Controller Model nil");
 }
 
 -(void)testControllerInitWithModel
 {
+    [self allocControllerWithMockModel:true];
     XCTAssertEqual([sutController model], theMockBlinkModel,
                    @"View Controller set Model wrong");
 }
 
 -(void)testControllerActionPlusCallModelIncrementPeriod
 {
+    [self allocControllerWithMockModel:true];
     [sutController actionPlus:nil];
     XCTAssertEqual(1u, [theMockBlinkModel nbCallIncrementPeriode],
                    @"Action Plus shall call Model IncremetPeriode");
 }
+
 @end
