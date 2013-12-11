@@ -14,6 +14,8 @@
 @interface blinkControllerTests : XCTestCase
 {
     epiViewController*sutController;
+    mockBlinkModel*theMockBlinkModel;
+    bool dontUseMockModel;
 }
 @end
 
@@ -22,6 +24,12 @@
 -(void)allocController
 {
     sutController = [epiViewController alloc];
+    if (dontUseMockModel) {
+        sutController = [sutController init];
+    } else {
+        theMockBlinkModel = [[mockBlinkModel alloc] init];
+        sutController = [sutController initWithModel:theMockBlinkModel];
+    }
 }
 
 - (void)setUp
@@ -38,22 +46,18 @@
 
 - (void)testControllerModelNotNil
 {
-    sutController = [sutController init];
+    dontUseMockModel = true;
     XCTAssertNotNil([sutController model], @"View Controller Model nil");
 }
 
 -(void)testControllerInitWithModel
 {
-    epiBlinkModel*testModel = [[epiBlinkModel alloc] init];
-    sutController = [sutController initWithModel:testModel];
-    XCTAssertEqual([sutController model], testModel,
+    XCTAssertEqual([sutController model], theMockBlinkModel,
                    @"View Controller set Model wrong");
 }
 
 -(void)testControllerActionPlusCallModelIncrementPeriod
 {
-    mockBlinkModel*theMockBlinkModel = [[mockBlinkModel alloc] init];
-    sutController = [sutController initWithModel:theMockBlinkModel];
     [sutController actionPlus:nil];
     XCTAssertEqual(1u, [theMockBlinkModel nbCallIncrementPeriode],
                    @"Action Plus shall call Model IncremetPeriode");
