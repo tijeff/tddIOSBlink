@@ -23,12 +23,11 @@
 
 -(void)allocController
 {
-    sutController = [epiViewController alloc];
     if (dontUseMockModel) {
-        sutController = [sutController init];
+        sutController = [[epiViewController alloc] init];
     } else {
         theMockBlinkModel = [[mockBlinkModel alloc] init];
-        sutController = [sutController initWithModel:theMockBlinkModel];
+        sutController = [[epiViewController alloc] initWithModel:theMockBlinkModel];
     }
 }
 
