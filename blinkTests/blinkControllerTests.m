@@ -57,6 +57,14 @@
                     @"viewDidLoad of View Controller shall init Model");
 }
 
+-(void)testControllerViewDidLoadShallKeepExistingModel
+{
+    [self allocControllerWithMockModel:true];
+    [sutController viewDidLoad];
+    XCTAssertEqualObjects([sutController model], theMockBlinkModel,
+                    @"viewDidLoad of View Controller shall keep existing Model");
+}
+
 -(void)testControllerActionPlusCallModelIncrementPeriod
 {
     [self allocControllerWithMockModel:true];
