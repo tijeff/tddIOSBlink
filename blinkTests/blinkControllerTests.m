@@ -41,18 +41,20 @@
     [super tearDown];
 }
 
-- (void)testControllerModelNotNil
-{
-    // Rebuild sutController with standard model (not mock)
-    [self allocControllerWithMockModel:false];
-    XCTAssertNotNil([sutController model], @"View Controller Model nil");
-}
-
 -(void)testControllerInitWithModel
 {
     [self allocControllerWithMockModel:true];
     XCTAssertEqual([sutController model], theMockBlinkModel,
                    @"View Controller set Model wrong");
+}
+
+- (void)testControllerViewDidLoadInitModel
+{
+    // Rebuild sutController with standard model (not mock)
+    [self allocControllerWithMockModel:false];
+    [sutController viewDidLoad];
+    XCTAssertNotNil([sutController model],
+                    @"viewDidLoad of View Controller shall init Model");
 }
 
 -(void)testControllerActionPlusCallModelIncrementPeriod

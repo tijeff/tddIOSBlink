@@ -16,13 +16,6 @@
 @synthesize buttonPlus;
 @synthesize model;
 
--(id)init
-{
-    self = [super init];
-    self.model = [[epiBlinkModel alloc] init];
-    return self;
-}
-
 -(id)initWithModel: (epiBlinkModel*)theModel
 {
     self = [super init];
@@ -37,7 +30,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    model = [[epiBlinkModel alloc] init];
 }
 
 - (void)didReceiveMemoryWarning
