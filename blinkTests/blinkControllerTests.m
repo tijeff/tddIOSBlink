@@ -35,4 +35,14 @@
     XCTAssertNotNil([sutController model], @"View Controller Model nil");
 }
 
+-(void)testControllerInitWithModel
+{
+    epiViewController*sutController;
+    epiBlinkModel*testModel = [[epiBlinkModel alloc] init];
+    sutController = [[epiViewController alloc] initWithModel:testModel];
+    XCTAssertEqual([sutController model], testModel,
+                   @"View Controller set Model wrong");
+}
+
+
 @end

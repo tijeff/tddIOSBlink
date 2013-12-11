@@ -23,6 +23,13 @@
     return self;
 }
 
+-(id)initWithModel: (epiBlinkModel*)theModel
+{
+    self = [super init];
+    self.model = theModel;
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];

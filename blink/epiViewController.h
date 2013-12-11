@@ -18,4 +18,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelBlinker;
 @property (nonatomic)epiBlinkModel * model;
 
+-(id)initWithModel: (epiBlinkModel*)theModel;
+
 @end
