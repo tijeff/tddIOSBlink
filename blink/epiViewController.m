@@ -6,16 +6,22 @@
 //  Copyright (c) 2013 jeff. All rights reserved.
 //
 
+#import "epiBlinkModel.h"
+
+// Class Under Test
 #import "epiViewController.h"
-
-@interface epiViewController ()
-
-
-@end
 
 @implementation epiViewController
 
 @synthesize buttonPlus;
+@synthesize model;
+
+-(id)init
+{
+    self = [super init];
+    self.model = [[epiBlinkModel alloc] init];
+    return self;
+}
 
 - (void)viewDidLoad
 {
