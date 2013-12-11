@@ -30,10 +30,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    if (model == nil)
-    {
-        model = [[epiBlinkModel alloc] init];
-    }
+    [self initModel];
 }
 
 - (void)didReceiveMemoryWarning
@@ -42,4 +39,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)initModel
+{
+    if (model == nil)
+    {
+        model = [[epiBlinkModel alloc] init];
+    }    
+}
 @end
