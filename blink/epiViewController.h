@@ -19,5 +19,6 @@
 @property (nonatomic)epiBlinkModel * model;
 
 -(id)initWithModel: (epiBlinkModel*)theModel;
+- (IBAction)actionPlus:(id)sender;
 
 @end

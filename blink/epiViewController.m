@@ -30,6 +30,10 @@
     return self;
 }
 
+- (IBAction)actionPlus:(id)sender {
+    [model incrementPeriod:1];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];

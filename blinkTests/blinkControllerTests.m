@@ -9,17 +9,25 @@
 #import <XCTest/XCTest.h>
 
 #import "epiViewController.h"
+#import "mockBlinkModel.h"
 
 @interface blinkControllerTests : XCTestCase
-
+{
+    epiViewController*sutController;
+}
 @end
 
 @implementation blinkControllerTests
 
+-(void)allocController
+{
+    sutController = [epiViewController alloc];
+}
+
 - (void)setUp
 {
     [super setUp];
-    // Put setup code here; it will be run once, before the first test case.
+    [self allocController];
 }
 
 - (void)tearDown
@@ -30,19 +38,24 @@
 
 - (void)testControllerModelNotNil
 {
-    epiViewController*sutController;
-    sutController = [[epiViewController alloc] init];
+    sutController = [sutController init];
     XCTAssertNotNil([sutController model], @"View Controller Model nil");
 }
 
 -(void)testControllerInitWithModel
 {
-    epiViewController*sutController;
     epiBlinkModel*testModel = [[epiBlinkModel alloc] init];
-    sutController = [[epiViewController alloc] initWithModel:testModel];
+    sutController = [sutController initWithModel:testModel];
     XCTAssertEqual([sutController model], testModel,
                    @"View Controller set Model wrong");
 }
 
-
+-(void)testControllerActionPlusCallModelIncrementPeriod
+{
+    mockBlinkModel*theMockBlinkModel = [[mockBlinkModel alloc] init];
+    sutController = [sutController initWithModel:theMockBlinkModel];
+    [sutController actionPlus:nil];
+    XCTAssertEqual(1u, [theMockBlinkModel nbCallIncrementPeriode],
+                   @"Action Plus shall call Model IncremetPeriode");
+}
 @end
