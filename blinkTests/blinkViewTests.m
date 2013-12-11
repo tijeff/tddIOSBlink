@@ -66,4 +66,9 @@
     XCTAssertNotNil([viewController labelBlinker]);
 }
 
+-(void)testLabelPeriodDefaultValue
+{
+    XCTAssertEqualObjects(@"", [[viewController labelPeriod] text],
+                          @"View: default label period value shall be 0");
+}
 @end
