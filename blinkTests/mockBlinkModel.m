@@ -10,6 +10,13 @@
 
 @implementation mockBlinkModel
 
+-(id)initWithPeriod:(unsigned int)thePeriod
+{
+    self = [super init];
+    period = thePeriod;
+    return self;
+}
+
 -(void)incrementPeriod: (unsigned int)increment
 {
     _nbCallIncrementPeriode++;

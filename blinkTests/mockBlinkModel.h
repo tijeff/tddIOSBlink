@@ -12,6 +12,7 @@
 
 @property unsigned int nbCallIncrementPeriode;
 
+-(id)initWithPeriod:(unsigned int)thePeriod;
 -(void)incrementPeriod: (unsigned int)increment;
 
 @end

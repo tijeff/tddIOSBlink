@@ -31,6 +31,7 @@
 {
     [super viewDidLoad];
     [self initModel];
+    [self labelPeriod].text = [[NSString alloc] initWithFormat:@"%u",model.period ];
 }
 
 - (void)didReceiveMemoryWarning

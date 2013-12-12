@@ -11,6 +11,9 @@
 #import "epiViewController.h"
 #import "mockBlinkModel.h"
 
+#define PERIOD (20u)
+#define PERIOD_NSSTRING ([[NSString alloc] initWithFormat:@"%u",PERIOD])
+
 @interface blinkControllerTests : XCTestCase
 {
     epiViewController*sutController;
@@ -25,7 +28,7 @@
     if (!UseMockModel) {
         sutController = [[epiViewController alloc] init];
     } else {
-        theMockBlinkModel = [[mockBlinkModel alloc] init];
+        theMockBlinkModel = [[mockBlinkModel alloc] initWithPeriod:PERIOD];
         sutController = [[epiViewController alloc] initWithModel:theMockBlinkModel];
     }
 }
@@ -71,6 +74,17 @@
     [sutController actionPlus:nil];
     XCTAssertEqual(1u, [theMockBlinkModel nbCallIncrementPeriode],
                    @"Action Plus shall call Model IncremetPeriode");
+}
+
+-(void)testControllerViewDidLoadShallSetLabelPeriodWithModelPeriod
+{
+    [self allocControllerWithMockModel:true];
+    UILabel* theLabel = [[UILabel alloc] init];
+    sutController.labelPeriod = theLabel;
+    [sutController viewDidLoad];
+    XCTAssertEqualObjects(PERIOD_NSSTRING, [[sutController labelPeriod] text],
+                          @"viewDidLoad shall initialize labelPeriod with Model Period [%@]", [sutController labelPeriod]);
+    
 }
 
 @end
