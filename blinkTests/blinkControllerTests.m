@@ -33,9 +33,16 @@
     }
 }
 
+- (void)recreateSutControllerWithNoMockModel
+{
+    sutController = nil;
+    [self allocControllerWithMockModel:false];
+}
+
 - (void)setUp
 {
     [super setUp];
+    [self allocControllerWithMockModel:true];
 }
 
 - (void)tearDown
@@ -46,15 +53,13 @@
 
 -(void)testControllerInitWithModel
 {
-    [self allocControllerWithMockModel:true];
     XCTAssertEqual([sutController model], theMockBlinkModel,
                    @"View Controller set Model wrong");
 }
 
 - (void)testControllerViewDidLoadInitModel
 {
-    // Rebuild sutController with standard model (not mock)
-    [self allocControllerWithMockModel:false];
+    [self recreateSutControllerWithNoMockModel];
     [sutController viewDidLoad];
     XCTAssertNotNil([sutController model],
                     @"viewDidLoad of View Controller shall init Model");
@@ -62,7 +67,6 @@
 
 -(void)testControllerViewDidLoadShallKeepExistingModel
 {
-    [self allocControllerWithMockModel:true];
     [sutController viewDidLoad];
     XCTAssertEqualObjects([sutController model], theMockBlinkModel,
                     @"viewDidLoad of View Controller shall keep existing Model");
@@ -70,7 +74,6 @@
 
 -(void)testControllerActionPlusCallModelIncrementPeriod
 {
-    [self allocControllerWithMockModel:true];
     [sutController actionPlus:nil];
     XCTAssertEqual(1u, [theMockBlinkModel nbCallIncrementPeriode],
                    @"Action Plus shall call Model IncremetPeriode");
@@ -78,7 +81,6 @@
 
 -(void)testControllerViewDidLoadShallSetLabelPeriodWithModelPeriod
 {
-    [self allocControllerWithMockModel:true];
     UILabel* theLabel = [[UILabel alloc] init];
     sutController.labelPeriod = theLabel;
     [sutController viewDidLoad];
