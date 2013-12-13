@@ -102,4 +102,19 @@
     
 }
 
+-(void)testControllerViewModelNotificationShallReverseHighlighteLabelBlinker
+{
+    UILabel* theLabel = [[UILabel alloc] init];
+    theLabel.highlighted = false;
+    sutController.labelBlinker = theLabel;
+    [sutController viewDidLoad];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"beatNotification"
+                                                        object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"beatNotification"
+                                                        object:nil];
+    XCTAssertFalse(theLabel.highlighted,
+              @"model 2xnotification shall keep highligthted state of labelPeriod");
+    
+}
+
 @end

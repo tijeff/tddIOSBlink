@@ -29,7 +29,7 @@
 
 -(void)beatNotificationHandle:(NSNotification*)note
 {
-    self.labelBlinker.highlighted = true;
+    self.labelBlinker.highlighted = !self.labelBlinker.highlighted;
 }
 
 - (void)viewDidLoad
