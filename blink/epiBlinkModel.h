@@ -9,9 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface epiBlinkModel : NSObject
-{
-    unsigned int period;
-}
+
 @property(nonatomic, assign)unsigned int period;
 
 -(void)incrementPeriod: (unsigned int)increment;

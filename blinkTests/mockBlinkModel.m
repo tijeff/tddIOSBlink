@@ -13,7 +13,7 @@
 -(id)initWithPeriod:(unsigned int)thePeriod
 {
     self = [super init];
-    period = thePeriod;
+    self.period = thePeriod;
     return self;
 }
 
