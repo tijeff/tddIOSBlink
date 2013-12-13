@@ -16,6 +16,12 @@
 @synthesize period;
 @synthesize isStarted;
 
+-(bool)isStarted
+{
+    isStarted = [self->beatThread isExecuting] && ![self->beatThread isCancelled];
+    return isStarted;
+}
+
 -(id)init
 {
     self = [super init];
@@ -43,7 +49,6 @@
 
 -(void)startBeat
 {
-    isStarted = true;
     if (![self->beatThread isExecuting]) {
         [self->beatThread start];
     }
@@ -51,7 +56,6 @@
 
 -(void)stopBeat
 {
-    isStarted = false;
     [self->beatThread cancel];
 }
 
