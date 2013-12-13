@@ -27,8 +27,17 @@
     [model incrementPeriod:1];
 }
 
+-(void)beatNotificationHandle:(NSNotification*)note
+{
+    self.labelBlinker.highlighted = true;
+}
+
 - (void)viewDidLoad
 {
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(beatNotificationHandle:)
+                                                 name:@"beatNotification"
+                                               object:nil];
     [super viewDidLoad];
     [self initModel];
     [self labelPeriod].text = [[NSString alloc] initWithFormat:@"%u",model.period ];
