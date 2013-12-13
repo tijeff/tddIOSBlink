@@ -60,6 +60,9 @@
                                 <state key="normal" title="Start/Stop">
                                     <color key="titleColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="actionStartStop:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="cCq-sR-cKr"/>
+                                </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Blinker" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KId-z5-kSn">
                                 <rect key="frame" x="20" y="297" width="280" height="251"/>

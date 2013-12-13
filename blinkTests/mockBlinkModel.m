@@ -22,4 +22,9 @@
     _nbCallIncrementPeriode++;
 }
 
+-(void)startBeat
+{
+    _nbCallStartBeat++;
+}
+
 @end

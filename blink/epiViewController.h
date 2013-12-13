@@ -20,5 +20,6 @@
 
 -(id)initWithModel: (epiBlinkModel*)theModel;
 - (IBAction)actionPlus:(id)sender;
+- (IBAction)actionStartStop:(id)sender;
 
 @end

@@ -11,8 +11,10 @@
 @interface mockBlinkModel : epiBlinkModel
 
 @property unsigned int nbCallIncrementPeriode;
+@property unsigned int nbCallStartBeat;
 
 -(id)initWithPeriod:(unsigned int)thePeriod;
 -(void)incrementPeriod: (unsigned int)increment;
+-(void)startBeat;
 
 @end

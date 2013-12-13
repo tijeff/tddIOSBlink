@@ -27,6 +27,10 @@
     [model incrementPeriod:1];
 }
 
+- (IBAction)actionStartStop:(id)sender {
+    [model startBeat];
+}
+
 -(void)beatNotificationHandle:(NSNotification*)note
 {
     self.labelBlinker.highlighted = !self.labelBlinker.highlighted;

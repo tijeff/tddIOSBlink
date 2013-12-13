@@ -117,4 +117,11 @@
     
 }
 
+-(void)testControllerActionStartStopCallModelStartBeat
+{
+    [sutController actionStartStop:nil];
+    XCTAssertEqual(1u, [theMockBlinkModel nbCallStartBeat],
+                   @"Action StartStop shall call Model startBeat");
+}
+
 @end
