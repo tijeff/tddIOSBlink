@@ -99,4 +99,11 @@
 {
     XCTAssertFalse(blinkModel.isStarted, @"isStarted shall be false at init");
 }
+
+-(void)testIsStartedShallBeTrueAtStart
+{
+    [blinkModel startBeat];
+    XCTAssert(blinkModel.isStarted, @"isStarted shall be true after start");
+}
+
 @end

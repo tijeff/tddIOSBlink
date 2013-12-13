@@ -43,6 +43,7 @@
 
 -(void)startBeat
 {
+    isStarted = true;
     if (![self->beatThread isExecuting]) {
         [self->beatThread start];
     }
