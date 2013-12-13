@@ -11,6 +11,7 @@
 @interface epiBlinkModel : NSObject
 
 @property(nonatomic, assign)unsigned int period;
+@property(nonatomic, assign, readonly)bool isStarted;
 
 -(void)incrementPeriod: (unsigned int)increment;
 -(void)decrementPeriod: (unsigned int)decrement;

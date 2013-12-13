@@ -95,4 +95,8 @@
     XCTAssertEqual(2u, numberNotifications, @"Test beat notification");
 }
 
+-(void)testIsStartedShallBeFalseAtInit
+{
+    XCTAssertFalse(blinkModel.isStarted, @"isStarted shall be false at init");
+}
 @end

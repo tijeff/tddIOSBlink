@@ -14,6 +14,7 @@
 }
 
 @synthesize period;
+@synthesize isStarted;
 
 -(id)init
 {
