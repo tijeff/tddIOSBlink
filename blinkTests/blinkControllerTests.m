@@ -89,18 +89,4 @@
     
 }
 
--(void)testControllerViewNotificationShallSetTextColorWithBackGroundColor
-{
-    UILabel* theLabel = [[UILabel alloc] init];
-    theLabel.textColor = [UIColor blueColor];
-    theLabel.backgroundColor = [UIColor yellowColor];
-    sutController.labelBlinker = theLabel;
-    [sutController viewDidLoad];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"beatNotification"
-                                                        object:nil];
-    XCTAssertEqualObjects([UIColor yellowColor], sutController.labelBlinker.textColor,
-                          @"view controller shall echange back ground and text color on model notiification");
-    
-}
-
 @end
