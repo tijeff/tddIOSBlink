@@ -51,6 +51,7 @@
 
 -(void)stopBeat
 {
+    isStarted = false;
     [self->beatThread cancel];
 }
 
