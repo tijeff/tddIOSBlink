@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 jeff. All rights reserved.
 //
 
+#define START_NSTRING @"START"
+
 #import "epiBlinkModel.h"
 
 // Class Under Test
@@ -45,6 +47,7 @@
     [super viewDidLoad];
     [self initModel];
     [self labelPeriod].text = [[NSString alloc] initWithFormat:@"%u",model.period ];
+    [self buttonStartStop].titleLabel.text = START_NSTRING;
 }
 
 - (void)didReceiveMemoryWarning

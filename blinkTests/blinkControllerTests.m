@@ -13,6 +13,7 @@
 
 #define PERIOD (20u)
 #define PERIOD_NSSTRING ([[NSString alloc] initWithFormat:@"%u",PERIOD])
+#define START_NSSTRING @"START"
 
 @interface blinkControllerTests : XCTestCase
 {
@@ -124,4 +125,12 @@
                    @"Action StartStop shall call Model startBeat");
 }
 
+-(void)testControllerViewDidLoadShallSetLabelStartStop
+{
+    UIButton* theButton = [[UIButton alloc] init];
+    sutController.buttonStartStop = theButton;
+    [sutController viewDidLoad];
+    XCTAssertEqualObjects(START_NSSTRING, theButton.titleLabel.text,
+                          @"viewDidLoad shall initialize StartStop button to START");
+}
 @end
