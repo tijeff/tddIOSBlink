@@ -5,12 +5,20 @@
 //  Created by jeff on 28/11/2013.
 //  Copyright (c) 2013 jeff. All rights reserved.
 //
+// *****************************************************************************
 
 #import <XCTest/XCTest.h>
+
+// *****************************************************************************
+
 #import "epiBlinkModel.h"
+
+// *****************************************************************************
 
 @interface blinkModelTests : XCTestCase
 @end
+
+// *****************************************************************************
 
 @implementation blinkModelTests
 {
@@ -18,6 +26,7 @@
     unsigned int numberNotifications;
 }
 
+// -----------------------------------------------------------------------------
 -(id)init
 {
     self = [super init];
@@ -25,11 +34,7 @@
     return self;
 }
 
--(void)beatNotificationHandle:(NSNotification*)note
-{
-    numberNotifications++;
-}
-
+// -----------------------------------------------------------------------------
 - (void)setUp
 {
     [super setUp];
@@ -41,6 +46,7 @@
                                                object:nil];
 }
 
+// -----------------------------------------------------------------------------
 - (void)tearDown
 {
     [blinkModel stopBeat];
@@ -49,36 +55,8 @@
     [super tearDown];
 }
 
-- (void)testDefaultPeriod
-{
-    XCTAssertEqual(10u, blinkModel.period, @"Test default period");
-}
-
--(void)testIncrementPeriod
-{
-    [blinkModel incrementPeriod:10];
-    XCTAssertEqual(20u, blinkModel.period, @"Test increment period");
-}
-
--(void)testDecrementPeriod
-{
-    [blinkModel decrementPeriod:10];
-    XCTAssertEqual(0u, blinkModel.period, @"Test increment period");
-}
-
--(void)testDecrementPeriodBiggerValue
-{
-    [blinkModel decrementPeriod:12];
-    XCTAssertEqual(0u, blinkModel.period, @"Test decrement period");
-}
-
--(void)testBeatNotification1sAfterStart
-{
-    [blinkModel startBeat];
-    sleep(1u);
-    XCTAssertEqual(1u, numberNotifications, @"Test beat notification");
-}
-
+// -----------------------------------------------------------------------------
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 -(void)testBeatNotification11sAfterStart
 {
     [blinkModel startBeat];
@@ -86,6 +64,15 @@
     XCTAssertEqual(2u, numberNotifications, @"Test beat notification");
 }
 
+// -----------------------------------------------------------------------------
+-(void)testBeatNotification1sAfterStart
+{
+    [blinkModel startBeat];
+    sleep(1u);
+    XCTAssertEqual(1u, numberNotifications, @"Test beat notification");
+}
+
+// -----------------------------------------------------------------------------
 -(void)testBeatNotificationStartWait11sStopWait20s
 {
     [blinkModel startBeat];
@@ -95,22 +82,59 @@
     XCTAssertEqual(2u, numberNotifications, @"Test beat notification");
 }
 
+// -----------------------------------------------------------------------------
+-(void)testDecrementPeriod
+{
+    [blinkModel decrementPeriod:10];
+    XCTAssertEqual(0u, blinkModel.period, @"Test increment period");
+}
+
+// -----------------------------------------------------------------------------
+-(void)testDecrementPeriodBiggerValue
+{
+    [blinkModel decrementPeriod:12];
+    XCTAssertEqual(0u, blinkModel.period, @"Test decrement period");
+}
+
+// -----------------------------------------------------------------------------
+- (void)testDefaultPeriod
+{
+    XCTAssertEqual(10u, blinkModel.period, @"Test default period");
+}
+
+// -----------------------------------------------------------------------------
+-(void)testIncrementPeriod
+{
+    [blinkModel incrementPeriod:10];
+    XCTAssertEqual(20u, blinkModel.period, @"Test increment period");
+}
+
+// -----------------------------------------------------------------------------
+-(void)testIsStartedShallBeFalseAfterStartStop
+{
+    [blinkModel startBeat];
+    [blinkModel stopBeat];
+    XCTAssertFalse(blinkModel.isStarted, @"isStarted shall be false after start-stop");
+}
+
+// -----------------------------------------------------------------------------
 -(void)testIsStartedShallBeFalseAtInit
 {
     XCTAssertFalse(blinkModel.isStarted, @"isStarted shall be false at init");
 }
 
+// -----------------------------------------------------------------------------
 -(void)testIsStartedShallBeTrueAtStart
 {
     [blinkModel startBeat];
     XCTAssert(blinkModel.isStarted, @"isStarted shall be true after start");
 }
 
--(void)testIsStartedShallBeFalseAfterStartStop
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// -----------------------------------------------------------------------------
+-(void)beatNotificationHandle:(NSNotification*)note
 {
-    [blinkModel startBeat];
-    [blinkModel stopBeat];
-    XCTAssertFalse(blinkModel.isStarted, @"isStarted shall be false after start-stop");
+    numberNotifications++;
 }
 
 @end

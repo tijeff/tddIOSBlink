@@ -5,19 +5,27 @@
 //  Created by jeff on 28/11/2013.
 //  Copyright (c) 2013 jeff. All rights reserved.
 //
+// *****************************************************************************
 
 #define START_NSTRING @"START"
 
+// *****************************************************************************
+
 #import "epiBlinkModel.h"
 
-// Class Under Test
+// *****************************************************************************
+
 #import "epiViewController.h"
+
+// *****************************************************************************
 
 @implementation epiViewController
 
+// -----------------------------------------------------------------------------
 @synthesize buttonPlus;
 @synthesize model;
 
+// -----------------------------------------------------------------------------
 -(id)initWithModel: (epiBlinkModel*)theModel
 {
     self = [super init];
@@ -25,19 +33,39 @@
     return self;
 }
 
+// -----------------------------------------------------------------------------
 - (IBAction)actionPlus:(id)sender {
     [model incrementPeriod:1];
 }
 
+// -----------------------------------------------------------------------------
 - (IBAction)actionStartStop:(id)sender {
     [model startBeat];
 }
 
+// -----------------------------------------------------------------------------
 -(void)beatNotificationHandle:(NSNotification*)note
 {
     self.labelBlinker.highlighted = !self.labelBlinker.highlighted;
 }
 
+// -----------------------------------------------------------------------------
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+// -----------------------------------------------------------------------------
+-(void)initModel
+{
+    if (model == nil)
+    {
+        model = [[epiBlinkModel alloc] init];
+    }
+}
+
+// -----------------------------------------------------------------------------
 - (void)viewDidLoad
 {
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -50,17 +78,4 @@
     [self buttonStartStop].titleLabel.text = START_NSTRING;
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
--(void)initModel
-{
-    if (model == nil)
-    {
-        model = [[epiBlinkModel alloc] init];
-    }    
-}
 @end

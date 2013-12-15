@@ -5,38 +5,33 @@
 //  Created by jeff on 28/11/2013.
 //  Copyright (c) 2013 jeff. All rights reserved.
 //
+// *****************************************************************************
 
 #import "epiBlinkModel.h"
+
+// *****************************************************************************
 
 @implementation epiBlinkModel
 {
     NSThread*beatThread;
 }
 
+// -----------------------------------------------------------------------------
 @synthesize period;
 @synthesize isStarted;
 
--(bool)isStarted
-{
-    isStarted = [self->beatThread isExecuting] && ![self->beatThread isCancelled];
-    return isStarted;
-}
-
+// -----------------------------------------------------------------------------
 -(id)init
 {
     self = [super init];
     self.period = 10;
     self->beatThread = [[NSThread alloc] initWithTarget:self
-                                         selector:@selector(threadBeat)
-                                           object:nil];
+                                               selector:@selector(threadBeat)
+                                                 object:nil];
     return self;
 }
 
--(void)incrementPeriod:(unsigned int)increment
-{
-    self.period += increment;
-}
-
+// -----------------------------------------------------------------------------
 -(void)decrementPeriod:(unsigned int)decrement
 {
     if (decrement>self.period)
@@ -47,6 +42,20 @@
     }
 }
 
+// -----------------------------------------------------------------------------
+-(void)incrementPeriod:(unsigned int)increment
+{
+    self.period += increment;
+}
+
+// -----------------------------------------------------------------------------
+-(bool)isStarted
+{
+    isStarted = [self->beatThread isExecuting] && ![self->beatThread isCancelled];
+    return isStarted;
+}
+
+// -----------------------------------------------------------------------------
 -(void)startBeat
 {
     if (![self->beatThread isExecuting]) {
@@ -54,11 +63,13 @@
     }
 }
 
+// -----------------------------------------------------------------------------
 -(void)stopBeat
 {
     [self->beatThread cancel];
 }
 
+// -----------------------------------------------------------------------------
 -(void)threadBeat
 {
     while(![self->beatThread isCancelled])

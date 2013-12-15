@@ -5,15 +5,22 @@
 //  Created by jeff on 11/12/2013.
 //  Copyright (c) 2013 jeff. All rights reserved.
 //
+// *****************************************************************************
 
 #import <XCTest/XCTest.h>
+#import "mockBlinkModel.h"
+
+// *****************************************************************************
 
 #import "epiViewController.h"
-#import "mockBlinkModel.h"
+
+// *****************************************************************************
 
 #define PERIOD (20u)
 #define PERIOD_NSSTRING ([[NSString alloc] initWithFormat:@"%u",PERIOD])
 #define START_NSSTRING @"START"
+
+// *****************************************************************************
 
 @interface blinkControllerTests : XCTestCase
 {
@@ -22,42 +29,49 @@
 }
 @end
 
+// *****************************************************************************
+
 @implementation blinkControllerTests
 
--(void)allocControllerWithMockModel:(bool)UseMockModel
-{
-    if (!UseMockModel) {
-        sutController = [[epiViewController alloc] init];
-    } else {
-        theMockBlinkModel = [[mockBlinkModel alloc] initWithPeriod:PERIOD];
-        sutController = [[epiViewController alloc] initWithModel:theMockBlinkModel];
-    }
-}
-
-- (void)recreateSutControllerWithNoMockModel
-{
-    sutController = nil;
-    [self allocControllerWithMockModel:false];
-}
-
+// -----------------------------------------------------------------------------
 - (void)setUp
 {
     [super setUp];
     [self allocControllerWithMockModel:true];
 }
 
+// -----------------------------------------------------------------------------
 - (void)tearDown
 {
     sutController = nil;
     [super tearDown];
 }
 
+// -----------------------------------------------------------------------------
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-(void)testControllerActionPlusCallModelIncrementPeriod
+{
+    [sutController actionPlus:nil];
+    XCTAssertEqual(1u, [theMockBlinkModel nbCallIncrementPeriode],
+                   @"Action Plus shall call Model IncremetPeriode");
+}
+
+// -----------------------------------------------------------------------------
+-(void)testControllerActionStartStopCallModelStartBeat
+{
+    [sutController actionStartStop:nil];
+    XCTAssertEqual(1u, [theMockBlinkModel nbCallStartBeat],
+                   @"Action StartStop shall call Model startBeat");
+}
+
+// -----------------------------------------------------------------------------
 -(void)testControllerInitWithModel
 {
     XCTAssertEqual([sutController model], theMockBlinkModel,
                    @"View Controller set Model wrong");
 }
 
+// -----------------------------------------------------------------------------
 - (void)testControllerViewDidLoadInitModel
 {
     [self recreateSutControllerWithNoMockModel];
@@ -66,6 +80,7 @@
                     @"viewDidLoad of View Controller shall init Model");
 }
 
+// -----------------------------------------------------------------------------
 -(void)testControllerViewDidLoadShallKeepExistingModel
 {
     [sutController viewDidLoad];
@@ -73,23 +88,29 @@
                     @"viewDidLoad of View Controller shall keep existing Model");
 }
 
--(void)testControllerActionPlusCallModelIncrementPeriod
-{
-    [sutController actionPlus:nil];
-    XCTAssertEqual(1u, [theMockBlinkModel nbCallIncrementPeriode],
-                   @"Action Plus shall call Model IncremetPeriode");
-}
 
+// -----------------------------------------------------------------------------
 -(void)testControllerViewDidLoadShallSetLabelPeriodWithModelPeriod
 {
     UILabel* theLabel = [[UILabel alloc] init];
     sutController.labelPeriod = theLabel;
     [sutController viewDidLoad];
     XCTAssertEqualObjects(PERIOD_NSSTRING, [[sutController labelPeriod] text],
-                          @"viewDidLoad shall initialize labelPeriod with Model Period [%@]", [sutController labelPeriod]);
+                          @"viewDidLoad shall initialize labelPeriod with Model Period");
     
 }
 
+// -----------------------------------------------------------------------------
+-(void)testControllerViewDidLoadShallSetLabelStartStop
+{
+    UIButton* theButton = [[UIButton alloc] init];
+    sutController.buttonStartStop = theButton;
+    [sutController viewDidLoad];
+    XCTAssertEqualObjects(START_NSSTRING, theButton.titleLabel.text,
+                          @"viewDidLoad shall initialize StartStop button to START");
+}
+
+// -----------------------------------------------------------------------------
 -(void)testControllerViewModelNotificationShallHighlighteLabelBlinker
 {
     UILabel* theLabel = [[UILabel alloc] init];
@@ -103,6 +124,7 @@
     
 }
 
+// -----------------------------------------------------------------------------
 -(void)testControllerViewModelNotificationShallReverseHighlighteLabelBlinker
 {
     UILabel* theLabel = [[UILabel alloc] init];
@@ -118,19 +140,23 @@
     
 }
 
--(void)testControllerActionStartStopCallModelStartBeat
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// -----------------------------------------------------------------------------
+-(void)allocControllerWithMockModel:(bool)UseMockModel
 {
-    [sutController actionStartStop:nil];
-    XCTAssertEqual(1u, [theMockBlinkModel nbCallStartBeat],
-                   @"Action StartStop shall call Model startBeat");
+    if (!UseMockModel) {
+        sutController = [[epiViewController alloc] init];
+    } else {
+        theMockBlinkModel = [[mockBlinkModel alloc] initWithPeriod:PERIOD];
+        sutController = [[epiViewController alloc] initWithModel:theMockBlinkModel];
+    }
 }
 
--(void)testControllerViewDidLoadShallSetLabelStartStop
+// -----------------------------------------------------------------------------
+- (void)recreateSutControllerWithNoMockModel
 {
-    UIButton* theButton = [[UIButton alloc] init];
-    sutController.buttonStartStop = theButton;
-    [sutController viewDidLoad];
-    XCTAssertEqualObjects(START_NSSTRING, theButton.titleLabel.text,
-                          @"viewDidLoad shall initialize StartStop button to START");
+    sutController = nil;
+    [self allocControllerWithMockModel:false];
 }
+
 @end
