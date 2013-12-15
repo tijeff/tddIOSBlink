@@ -117,8 +117,7 @@
     theLabel.highlighted = false;
     sutController.labelBlinker = theLabel;
     [sutController viewDidLoad];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"beatNotification"
-                                                        object:nil];
+    [self postBeatNotification];
     XCTAssert(theLabel.highlighted,
               @"model notification shall reverse highligthted state of labelPeriod");
     
@@ -131,10 +130,8 @@
     theLabel.highlighted = false;
     sutController.labelBlinker = theLabel;
     [sutController viewDidLoad];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"beatNotification"
-                                                        object:nil];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"beatNotification"
-                                                        object:nil];
+    [self postBeatNotification];
+    [self postBeatNotification];
     XCTAssertFalse(theLabel.highlighted,
               @"model 2xnotification shall keep highligthted state of labelPeriod");
     
@@ -150,6 +147,13 @@
         theMockBlinkModel = [[mockBlinkModel alloc] initWithPeriod:PERIOD];
         sutController = [[epiViewController alloc] initWithModel:theMockBlinkModel];
     }
+}
+
+// -----------------------------------------------------------------------------
+-(void)postBeatNotification
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"beatNotification"
+                                                        object:nil];
 }
 
 // -----------------------------------------------------------------------------
